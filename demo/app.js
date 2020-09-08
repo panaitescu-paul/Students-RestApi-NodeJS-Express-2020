@@ -5,8 +5,6 @@ app.use(bodyParser.json());
 const PORT = 3000;
 const fs = require('fs');
 
-// TODO: add errors
-
 // CREATE a student
 app.post("/api/students", (req, res) => {
     console.log("req.body: ", req.body);
