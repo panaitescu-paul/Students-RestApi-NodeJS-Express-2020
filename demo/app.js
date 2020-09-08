@@ -1,11 +1,11 @@
 /*--------------------------------------------------------*
-*			Students RestApi - NodeJS, Express  		  *
+*           Students RestApi - NodeJS, Express            *
 * --------------------------------------------------------*
 *                   Terminal commands:                    *
-*                       								  *	
-*       		Install: 	cd demo                       *
-*               			npm install                   *
-*       		Run: 		node app.js              	  *
+*                                                         *
+*               Install:    cd demo                       *
+*                           npm install                   *
+*               Run:        node app.js                   *
 * --------------------------------------------------------*/
 
 const express = require("express");
