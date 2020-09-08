@@ -1,5 +1,5 @@
 {
-  "name": "DLS - Demo",
+  "name": "demo",
   "version": "1.0.0",
   "description": "RESTful Web Services and REST APIs",
   "main": "index.js",
