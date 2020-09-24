@@ -13,17 +13,17 @@ const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 const PORT = 3000;
-const fs = require('fs');
+const fs = require('fs'); // for reading and writing into a file
 
 // CREATE a student
 app.post("/api/students", (req, res) => {
     console.log("req.body: ", req.body);
     let student = req.body;
     let jsonData = fs.readFileSync('students.json');
-    let students = JSON.parse(jsonData);
+    let students = JSON.parse(jsonData); // from JSON format into JavaScript Object
     let numberOfStudents = Object.keys(students).length;
     students[`student_${numberOfStudents + 1}`] = student;
-    fs.writeFileSync('students.json', JSON.stringify(students));
+    fs.writeFileSync('students.json', JSON.stringify(students)); // from JavaScript Object into JSON format
 
     res.json({
         status: 200,
@@ -35,7 +35,7 @@ app.post("/api/students", (req, res) => {
 // READ all students
 app.get("/api/students", (req, res) => {
     let jsonData = fs.readFileSync('students.json');
-    let students = JSON.parse(jsonData);
+    let students = JSON.parse(jsonData); // from JSON format into JavaScript Object
 
     console.log("students:", students);
     res.json({
@@ -44,11 +44,11 @@ app.get("/api/students", (req, res) => {
     });
 });
 
-// READ a specific student by id
+// READ a specccccific student by id
 app.get("/api/students/:id", (req, res) => {
     console.log("req.params.id: ", req.params.id);
     let jsonData = fs.readFileSync('students.json');
-    let students = JSON.parse(jsonData);
+    let students = JSON.parse(jsonData); // from JSON format into JavaScript Object
     let student = students[`student_${req.params.id}`];
 
     console.log("student:", student);
@@ -62,10 +62,10 @@ app.get("/api/students/:id", (req, res) => {
 app.delete("/api/students/:id", (req, res) => {
     console.log("req.params.id: ", req.params.id);
     let jsonData = fs.readFileSync('students.json');
-    let students = JSON.parse(jsonData);
+    let students = JSON.parse(jsonData); // from JSON format into JavaScript Object
     let student = students[`student_${req.params.id}`];
     delete students[`student_${req.params.id}`];
-    fs.writeFileSync('students.json', JSON.stringify(students));
+    fs.writeFileSync('students.json', JSON.stringify(students)); // from JavaScript Object into JSON format
 
     console.log("students:", students);
     res.json({
@@ -80,14 +80,14 @@ app.put("/api/students/:id", (req, res) => {
     console.log("req.params.id: ", req.params.id);
     console.log("req.body: ",  req.body);
     let jsonData = fs.readFileSync('students.json');
-    let students = JSON.parse(jsonData);
+    let students = JSON.parse(jsonData); // from JSON format into JavaScript Object
     let studentFound = false;
 
     for (let i=1; i<=Object.keys(students).length; i++) {
        if(students[`student_${i}`] === students[`student_${req.params.id}`]) {  // if the student id exists in the json file
            students[`student_${req.params.id}`] = req.body;
            let student = students[`student_${req.params.id}`];
-           fs.writeFileSync('students.json', JSON.stringify(students));
+           fs.writeFileSync('students.json', JSON.stringify(students)); // from JavaScript Object into JSON format
 
            res.json({
                status: 200,
