@@ -44,7 +44,7 @@ app.get("/api/students", (req, res) => {
     });
 });
 
-// READ a specccccific student by id
+// READ a specific student by id
 app.get("/api/students/:id", (req, res) => {
     console.log("req.params.id: ", req.params.id);
     let jsonData = fs.readFileSync('students.json');
