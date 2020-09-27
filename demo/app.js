@@ -26,7 +26,7 @@ app.post("/api/students", (req, res) => {
     fs.writeFileSync('students.json', JSON.stringify(students)); // from JavaScript Object into JSON format
 
     res.json({
-        status: 200,
+        status: 201,
         message: 'Student successfully added!',
         student
     });
