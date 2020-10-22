@@ -25,8 +25,7 @@ app.post("/api/students", (req, res) => {
     students[`student_${numberOfStudents + 1}`] = student;
     fs.writeFileSync('students.json', JSON.stringify(students)); // from JavaScript Object into JSON format
 
-    res.json({
-        status: 201,
+    res.status(201).json({
         message: 'Student successfully added!',
         student
     });
@@ -38,8 +37,7 @@ app.get("/api/students", (req, res) => {
     let students = JSON.parse(jsonData); // from JSON format into JavaScript Object
 
     console.log("students:", students);
-    res.json({
-        status: 200,
+    res.status(200).json({
         students
     });
 });
@@ -52,8 +50,7 @@ app.get("/api/students/:id", (req, res) => {
     let student = students[`student_${req.params.id}`];
 
     console.log("student:", student);
-    res.json({
-        status: 200,
+    res.status(200).json({
         student
     });
 });
@@ -68,8 +65,7 @@ app.delete("/api/students/:id", (req, res) => {
     fs.writeFileSync('students.json', JSON.stringify(students)); // from JavaScript Object into JSON format
 
     console.log("students:", students);
-    res.json({
-        status: 200,
+    res.status(200).json({
         message: 'Student successfully deleted!',
         student
     });
@@ -89,8 +85,7 @@ app.put("/api/students/:id", (req, res) => {
            let student = students[`student_${req.params.id}`];
            fs.writeFileSync('students.json', JSON.stringify(students)); // from JavaScript Object into JSON format
 
-           res.json({
-               status: 200,
+           res.status(200).json({
                message: 'Student successfully updated!',
                student
            });
@@ -99,8 +94,7 @@ app.put("/api/students/:id", (req, res) => {
        }
     }
     if (!studentFound) {
-        res.json({
-            status: 404,
+        res.status(404).json({
             message: 'Student not found!'
         });
     }
